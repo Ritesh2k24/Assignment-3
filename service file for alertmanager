@@ -1,0 +1,22 @@
+sudo nano /etc/systemd/system/alertmanager.service    # run this to enter in editor mode
+
+[Unit]
+Description=Alertmanager Service
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/alertmanager --config.file=/opt/alertmanager/alertmanager.yml --storage.path=/opt/alertmanager/data
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+sudo mv /opt/alertmanager/alertmanager /usr/local/bin/   #move the file to bin folder
+sudo chmod +x /usr/local/bin/alertmanager      #verify the permission. Ensure the Alertmanager binary is executable
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable alertmanager
+sudo systemctl restart alertmanager
+sudo systemctl status alertmanager
