@@ -1,0 +1,13 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: "migrate_script"
+  group_wait: 10s
+  group_interval: 30s
+  repeat_interval: 1m
+
+receivers:
+  - name: "migrate_script"
+    webhook_configs:
+      - url: "http://localhost:5001/migrate"  # This triggers your Flask API
