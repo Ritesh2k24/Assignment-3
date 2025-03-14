@@ -2,7 +2,7 @@ global:
   scrape_interval: 5s
 
 rule_files:
-  - "alert.rules.yml"   # Add this line to include alerting rules
+  - "alert.rules.yml"
 
 scrape_configs:
   - job_name: 'node'
